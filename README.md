@@ -4,4 +4,4 @@ A UAV flight simulator for CloudGCS
 
 #### License
 
-mit
+mit# frappe-uav-sim
