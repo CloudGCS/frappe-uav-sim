@@ -4,6 +4,14 @@ app_publisher = "CloudGCS"
 app_description = "A UAV flight simulator for CloudGCS"
 app_email = "contact@cloudgcs.com"
 app_license = "mit"
+
+doc_events = {
+    "Aircraft": {
+        "after_insert": "cgs_uav_sim.cloudgcs_uav_simulator.services.aircraft_service.on_aircraft_save",
+        "on_update": "cgs_uav_sim.cloudgcs_uav_simulator.services.aircraft_service.on_aircraft_save"
+    }
+}
+
 # required_apps = []
 
 # Includes in <head>
@@ -226,4 +234,3 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 #	"Logging DocType Name": 30  # days to retain logs
 # }
-

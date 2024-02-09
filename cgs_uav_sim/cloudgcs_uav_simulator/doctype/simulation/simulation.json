@@ -1,0 +1,427 @@
+{
+ "actions": [
+  {
+   "action": "cgs_uav_sim.cloudgcs_uav_simulator.doctype.simulation.simulation.start_simulation",
+   "action_type": "Server Action",
+   "group": "Simulation",
+   "label": "Start"
+  },
+  {
+   "action": "cgs_uav_sim.cloudgcs_uav_simulator.doctype.simulation.simulation.stop_simulation",
+   "action_type": "Server Action",
+   "group": "Simulation",
+   "label": "Stop"
+  },
+  {
+   "action": "cgs_uav_sim.cloudgcs_uav_simulator.doctype.simulation.simulation.launch_aircraft",
+   "action_type": "Server Action",
+   "group": "Aircraft",
+   "label": "Launch"
+  }
+ ],
+ "allow_rename": 1,
+ "autoname": "format:SIM-{YYMMDD}-{###}",
+ "creation": "2024-01-15 18:47:22.654978",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "simulation_tab",
+  "section_break_jtdr",
+  "title",
+  "aircraft",
+  "aircraft_type",
+  "is_active",
+  "column_break_buaj",
+  "description",
+  "initial_status_tab",
+  "aircraft_status",
+  "latitude",
+  "longitude",
+  "altitude",
+  "column_break_gyfc",
+  "roll",
+  "pitch",
+  "speed",
+  "direction",
+  "column_break_zsha",
+  "payload_weight",
+  "fuel_weight",
+  "failure_modes_tab",
+  "failure_modes_section",
+  "airspeed_a",
+  "airspeed_b",
+  "gps",
+  "column_break_tztr",
+  "main_engine",
+  "vtol_feedback",
+  "vtol_motor",
+  "column_break_gvtz",
+  "datalink_a",
+  "datalink_b",
+  "datalink_a_delay",
+  "datalink_b_delay",
+  "weather_info_tab",
+  "weather_info_section",
+  "wind_speed",
+  "wind_direction",
+  "column_break_oxdw",
+  "gust_intensity",
+  "gust_duration",
+  "gust_frequency",
+  "column_break_sczr",
+  "reference_altitude",
+  "pressure",
+  "temperature",
+  "relative_humidity"
+ ],
+ "fields": [
+  {
+   "fieldname": "simulation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Simulation"
+  },
+  {
+   "fieldname": "section_break_jtdr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "aircraft",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Aircraft",
+   "options": "Aircraft",
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fetch_from": "aircraft.type",
+   "fieldname": "aircraft_type",
+   "fieldtype": "Link",
+   "label": "Aircraft Type",
+   "options": "Aircraft Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_buaj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "initial_status_tab",
+   "fieldtype": "Tab Break",
+   "label": "Initial Status"
+  },
+  {
+   "default": "OnTable",
+   "fieldname": "aircraft_status",
+   "fieldtype": "Select",
+   "label": "Aircraft Status",
+   "options": "OnTable\nOnRunway\nOnLauncher\nOnGround\nFlying",
+   "reqd": 1
+  },
+  {
+   "default": "52.6997",
+   "description": "degrees",
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude",
+   "precision": "7",
+   "reqd": 1
+  },
+  {
+   "default": "-8.9147",
+   "description": "degrees",
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude",
+   "precision": "7",
+   "reqd": 1
+  },
+  {
+   "default": "2",
+   "description": "MSL altitude in meters",
+   "fieldname": "altitude",
+   "fieldtype": "Int",
+   "label": "Altitude",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_gyfc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "degrees",
+   "fieldname": "roll",
+   "fieldtype": "Int",
+   "label": "Roll",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "degrees",
+   "fieldname": "pitch",
+   "fieldtype": "Int",
+   "label": "Pitch",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "meters per second",
+   "fieldname": "speed",
+   "fieldtype": "Float",
+   "label": "Speed",
+   "precision": "1",
+   "reqd": 1
+  },
+  {
+   "default": "225",
+   "description": "degrees",
+   "fieldname": "direction",
+   "fieldtype": "Int",
+   "label": "Direction",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_zsha",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "3",
+   "description": "kg",
+   "fieldname": "payload_weight",
+   "fieldtype": "Float",
+   "label": "Payload Weight",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "default": "3",
+   "description": "kg",
+   "fieldname": "fuel_weight",
+   "fieldtype": "Float",
+   "label": "Fuel Weight",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "failure_modes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Failure Modes"
+  },
+  {
+   "fieldname": "failure_modes_section",
+   "fieldtype": "Section Break",
+   "label": "Click the Save button to reflect the failure mode changes to the simulator"
+  },
+  {
+   "default": "0",
+   "fieldname": "airspeed_a",
+   "fieldtype": "Check",
+   "label": "Airspeed A"
+  },
+  {
+   "default": "0",
+   "fieldname": "airspeed_b",
+   "fieldtype": "Check",
+   "label": "Airspeed B"
+  },
+  {
+   "default": "0",
+   "fieldname": "gps",
+   "fieldtype": "Check",
+   "label": "GPS"
+  },
+  {
+   "fieldname": "column_break_tztr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "main_engine",
+   "fieldtype": "Check",
+   "label": "Main Engine"
+  },
+  {
+   "default": "0",
+   "fieldname": "vtol_feedback",
+   "fieldtype": "Check",
+   "label": "VTOL Feedback"
+  },
+  {
+   "default": "0",
+   "fieldname": "vtol_motor",
+   "fieldtype": "Check",
+   "label": "VTOL Motor"
+  },
+  {
+   "fieldname": "column_break_gvtz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "datalink_a",
+   "fieldtype": "Check",
+   "label": "Datalink A"
+  },
+  {
+   "default": "0",
+   "fieldname": "datalink_b",
+   "fieldtype": "Check",
+   "label": "Datalink B"
+  },
+  {
+   "default": "0",
+   "fieldname": "datalink_a_delay",
+   "fieldtype": "Check",
+   "label": "Datalink A Delay"
+  },
+  {
+   "default": "0",
+   "fieldname": "datalink_b_delay",
+   "fieldtype": "Check",
+   "label": "Datalink B Delay"
+  },
+  {
+   "fieldname": "weather_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "Weather Info"
+  },
+  {
+   "fieldname": "weather_info_section",
+   "fieldtype": "Section Break",
+   "label": "Click the Save button to reflect the weather changes to the simulator"
+  },
+  {
+   "default": "0",
+   "description": "meters per second",
+   "fieldname": "wind_speed",
+   "fieldtype": "Float",
+   "label": "Wind Speed",
+   "precision": "1",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "This is the direction the wind blows to, in degrees.",
+   "fieldname": "wind_direction",
+   "fieldtype": "Int",
+   "label": "Wind Direction",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_oxdw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "meters per second",
+   "fieldname": "gust_intensity",
+   "fieldtype": "Int",
+   "label": "Gust Intensity",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "seconds",
+   "fieldname": "gust_duration",
+   "fieldtype": "Int",
+   "label": "Gust Duration",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "seconds",
+   "fieldname": "gust_frequency",
+   "fieldtype": "Int",
+   "label": "Gust Frequency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_sczr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "The MSL altitude in meters at which the specified weather is observed.",
+   "fieldname": "reference_altitude",
+   "fieldtype": "Int",
+   "label": "Reference Altitude",
+   "reqd": 1
+  },
+  {
+   "default": "101325",
+   "description": "pascals",
+   "fieldname": "pressure",
+   "fieldtype": "Int",
+   "label": "Pressure",
+   "reqd": 1
+  },
+  {
+   "default": "15",
+   "description": "\u00b0C",
+   "fieldname": "temperature",
+   "fieldtype": "Int",
+   "label": "Temperature",
+   "reqd": 1
+  },
+  {
+   "default": "25",
+   "description": "%",
+   "fieldname": "relative_humidity",
+   "fieldtype": "Int",
+   "label": "Relative Humidity",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Is Active",
+   "no_copy": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-17 04:37:04.291304",
+ "modified_by": "Administrator",
+ "module": "CloudGCS UAV Simulator",
+ "name": "Simulation",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title"
+}
